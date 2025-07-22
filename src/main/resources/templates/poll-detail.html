@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Poll Details</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1 th:text="${poll.question}"></h1>
+<form th:action="@{/polls/vote}" method="post">
+    <input type="hidden" name="pollId" th:value="${poll.id}" />
+    <ul>
+        <li th:each="option : ${poll.options}">
+            <label>
+                <input type="radio" name="optionId" th:value="${option.id}" />
+                <span th:text="${option.text}"></span>
+            </label>
+        </li>
+    </ul>
+    <button type="submit">Vote</button>
+</form>
+</body>
+</html>

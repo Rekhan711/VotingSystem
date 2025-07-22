@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Polls</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>All Polls</h1>
+<ul>
+    <li th:each="poll : ${polls}">
+        <a th:href="@{/polls/{id}(id=${poll.id})}" th:text="${poll.question}"></a>
+    </li>
+</ul>
+<a th:href="@{/polls/create}">Create New Poll</a>
+</body>
+</html>
